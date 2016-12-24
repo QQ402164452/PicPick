@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/PhotoPick_Folder_List_Item_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/PhotoPick_Folder_List_Item_img"
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/PhotoPick_Folder_List_Item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="Folder"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/PhotoPick_Folder_List_Item_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="150张"/>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/PhotoPick_Folder_List_Item_SelectedState"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/task_icon_selected_def"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/PreViewActivity_ViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/PreViewActivity_Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/PreViewActivity_Current_Position"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/PreViewActivity_Confirm_Btn"
+            android:layout_width="60dp"
+            android:layout_height="27dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/btn_confirm_bg"
+            android:text="完成"
+            android:textSize="12sp"
+            android:layout_marginRight="15dp"
+            android:textColor="@android:color/white"
+            style="?attr/borderlessButtonStyle"/>
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/PreViewActivity_Bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/PreViewActivity_DeleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:layout_alignParentRight="true"
+            android:text="删除"
+            android:textColor="@color/preview_bottom_delete_text"
+            android:drawableLeft="@drawable/tab_icon_delect_def"
+            android:drawablePadding="5dp"
+            android:textSize="16sp"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

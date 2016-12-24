@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#393A3F</color>
+    <color name="colorPrimaryDark">#393A3F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="PhotoPickActivity_List_Item_Bg">#353535</color>
+    <color name="ColorPrimary_alpha">#E6393A3F</color>
+    <color name="orange">#FF7223</color>
+    <color name="orange_drak">#ce5500</color>
+    <color name="blue_dark">#296695</color>
+    <color name="grey">#C0C0C0</color>
+</resources>

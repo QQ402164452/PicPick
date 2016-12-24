@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/PhotoPickActivity_Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="图片选择"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/PhotoPick_Confirm_Btn"
+            android:layout_width="60dp"
+            android:layout_height="27dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/btn_confirm_bg"
+            android:text="完成"
+            android:textSize="12sp"
+            android:layout_marginRight="15dp"
+            android:textColor="@android:color/white"
+            style="?attr/borderlessButtonStyle"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/PhotoPick_Bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/PhotoPick_Bottom_ImageFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所有图片"
+            android:drawableRight="@drawable/photo_pick_bottom_imagefolder_right"
+            android:drawablePadding="5dp"
+            android:textColor="@color/photo_pick_bottom_imagefolder_text"
+            android:padding="15dp"
+            />
+
+        <TextView
+            android:id="@+id/PhotoPick_Bottom_Count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="已选0/9"
+            android:padding="15dp"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_below="@id/PhotoPickActivity_Toolbar"
+        android:layout_above="@id/PhotoPick_Bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/PhotoPick_RecyclerView"
+            android:background="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:id="@+id/PhotoPick_Mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:background="#99000000"/>
+
+    </FrameLayout>
+
+
+</RelativeLayout>
