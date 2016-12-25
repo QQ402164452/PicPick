@@ -55,18 +55,18 @@ public class PphotoPick  {
                     cursor.moveToFirst();
                     String firstImage=cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));//获取系统中第一张图片的绝对路径
 
-                    FilenameFilter filenameFilter=new FilenameFilter() {//文件名过滤器
-                        @Override
-                        public boolean accept(File dir, String name) {
-                            if(name.endsWith(".jpg")||
-                                    name.endsWith(".png")||
-                                    name.endsWith(".jpeg")){
-                                return true;
-                            }else{
-                                return false;
-                            }
-                        }
-                    };
+//                    FilenameFilter filenameFilter=new FilenameFilter() {//文件名过滤器
+//                        @Override
+//                        public boolean accept(File dir, String name) {
+//                            if(name.endsWith(".jpg")||
+//                                    name.endsWith(".png")||
+//                                    name.endsWith(".jpeg")){
+//                                return true;
+//                            }else{
+//                                return false;
+//                            }
+//                        }
+//                    };
 
                     cursor.moveToPrevious();
                     while(cursor.moveToNext()){
@@ -80,9 +80,9 @@ public class PphotoPick  {
 
                         String dirPath=parentFile.getAbsolutePath();//获取文件的文件夹绝对路径
                         if(!mHashMap.containsKey(dirPath)){
-                            int picCount=parentFile.list(filenameFilter).length;//获取当前目录中所有图片的数量
+//                            int picCount=parentFile.list(filenameFilter).length;//获取当前目录中所有图片的数量
 
-                            ImageFolder folder=new ImageFolder(dirPath,path,picCount);
+                            ImageFolder folder=new ImageFolder(dirPath,path);
                             folder.addPath("_TAKE_PHOTO");//拍摄图片的Item的占位符
                             folder.addPath(path);
 
