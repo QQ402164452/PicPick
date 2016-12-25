@@ -43,7 +43,7 @@ public class PphotoPick  {
                 Cursor cursor=contentResolver.query(imageUri,null,
                         MediaStore.Images.Media.MIME_TYPE+"=? or "
                 +MediaStore.Images.Media.MIME_TYPE+"=?",
-                        new String[]{"image/jpeg","image/png","image/jpg"},//获取jpeg,png,jpg格式的图片
+                        new String[]{"image/jpeg","image/png"},//获取jpeg,png,jpg格式的图片
                         MediaStore.Images.Media.DATE_MODIFIED+" DESC");//按照时间降序排列
                 final int total=cursor.getCount();
                 if(total>0){
