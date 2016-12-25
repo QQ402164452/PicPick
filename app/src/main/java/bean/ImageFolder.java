@@ -11,13 +11,12 @@ public class ImageFolder {
     private String dir;//文件夹路径
     private String firstImagePath;//第一张图片的路径
     private String name;//文件夹的名称
-    private int count;//图片的数量
+    private int count=0;//图片的数量
     private ArrayList<String> imgPaths;//当前文件夹中包含的所有图片的绝对路径
 
-    public ImageFolder(String dir,String firstImagePath,int count){
+    public ImageFolder(String dir,String firstImagePath){
         this.dir=dir;
         this.firstImagePath=firstImagePath;
-        this.count=count;
         int lastIndexOf=this.dir.lastIndexOf("/");//从文件路径中提取文件名
         this.name=dir.substring(lastIndexOf+1);
         imgPaths=new ArrayList<>();
@@ -52,7 +51,7 @@ public class ImageFolder {
     }
 
     public int getCount() {
-        return count;
+        return imgPaths.size()-1;
     }
 
     public void setCount(int count) {
