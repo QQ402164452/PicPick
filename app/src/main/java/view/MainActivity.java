@@ -8,9 +8,11 @@ import android.view.View;
 import com.example.jason.picpick.R;
 
 import java.util.ArrayList;
+import java.util.jar.Manifest;
 
 import adapter.SelectAdapter;
 import interfaces.OnSelectItemClickListener;
+import util.PermissionCodes;
 
 public class MainActivity extends BaseActivity {
     private ArrayList<String> mSelect;//当前选择的图片数组
@@ -19,6 +21,9 @@ public class MainActivity extends BaseActivity {
 
     public final static int PHOTO_PICK_REQUEST = 300;
     public final static int PREVIEW_PHOTO_REQUEST = 301;
+
+    private int mClickPosition;
+    private boolean mIsAddBtn;
 
     @Override
     protected void initPre() {
@@ -45,26 +50,41 @@ public class MainActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new OnSelectItemClickListener() {
             @Override
             public void onItemClickListener(View view, int position, boolean isAddBtn) {
-                if (isAddBtn) {
-                    Intent intent = new Intent(MainActivity.this, PhotoPickActivity.class);
-                    ArrayList<String> temp = new ArrayList<>();
-                    temp.addAll(mSelect.subList(0, mSelect.size() - 1));//去掉 加载更多的图片的 标志位
-                    intent.putStringArrayListExtra(PhotoPickActivity.PHOTO_SELECT_IMG_ARRAYLIST, temp);
-                    startActivityForResult(intent, PHOTO_PICK_REQUEST);
-                } else {
-                    Intent intent = new Intent(MainActivity.this, PreviewActivity.class);
-                    if (mSelect.size() < 9) {//如果图片不满9张 显示 加载更多图片的 标志
-                        ArrayList<String> temp = new ArrayList<>();
-                        temp.addAll(mSelect.subList(0, mSelect.size() - 1));//去掉 加载更多的图片的 标志位
-                        intent.putStringArrayListExtra(PreviewActivity.PREVIEW_SELECT_IMG_ARRAYLIST, temp);
-                    } else {//如果图片满9张 数组中没有 显示 加载更多图片的 标志位
-                        intent.putStringArrayListExtra(PreviewActivity.PREVIEW_SELECT_IMG_ARRAYLIST, mSelect);
-                    }
-                    intent.putExtra(PreviewActivity.PREVIEW_SELECT_CURRENT_POSITION, position);
-                    startActivityForResult(intent, PREVIEW_PHOTO_REQUEST);
+                mClickPosition=position;
+                mIsAddBtn=isAddBtn;
+                if(checkPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE,PermissionCodes.PERMISSIONS_REQUEST_STORAGE)){
+                    toActivity();
                 }
             }
         });
+    }
+
+    @Override
+    public void onPermissionSuccess(int requestCode){
+        if(requestCode==PermissionCodes.PERMISSIONS_REQUEST_STORAGE){
+            toActivity();
+        }
+    }
+
+    public void toActivity(){
+        if (mIsAddBtn) {
+            Intent intent = new Intent(MainActivity.this, PhotoPickActivity.class);
+            ArrayList<String> temp = new ArrayList<>();
+            temp.addAll(mSelect.subList(0, mSelect.size() - 1));//去掉 加载更多的图片的 标志位
+            intent.putStringArrayListExtra(PhotoPickActivity.PHOTO_SELECT_IMG_ARRAYLIST, temp);
+            startActivityForResult(intent, PHOTO_PICK_REQUEST);
+        } else {
+            Intent intent = new Intent(MainActivity.this, PreviewActivity.class);
+            if (mSelect.size() < 9) {//如果图片不满9张 显示 加载更多图片的 标志
+                ArrayList<String> temp = new ArrayList<>();
+                temp.addAll(mSelect.subList(0, mSelect.size() - 1));//去掉 加载更多的图片的 标志位
+                intent.putStringArrayListExtra(PreviewActivity.PREVIEW_SELECT_IMG_ARRAYLIST, temp);
+            } else {//如果图片满9张 数组中没有 显示 加载更多图片的 标志位
+                intent.putStringArrayListExtra(PreviewActivity.PREVIEW_SELECT_IMG_ARRAYLIST, mSelect);
+            }
+            intent.putExtra(PreviewActivity.PREVIEW_SELECT_CURRENT_POSITION, mClickPosition);
+            startActivityForResult(intent, PREVIEW_PHOTO_REQUEST);
+        }
     }
 
     @Override
